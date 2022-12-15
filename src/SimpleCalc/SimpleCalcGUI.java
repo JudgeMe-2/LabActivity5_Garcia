@@ -25,7 +25,6 @@ public class SimpleCalcGUI extends JFrame {
         String s2 = tfNumber2.getText();
         System.out.println(s1);
         System.out.println(s2);
-
         try {
             if(s1.isBlank() || s2.isBlank()) {
                 throw new NullPointerException("No inputs");
@@ -99,6 +98,7 @@ public class SimpleCalcGUI extends JFrame {
         }
         return false;
     }
+
     public static void main(String[] args) {
         SimpleCalcGUI sc = new SimpleCalcGUI();
         sc.setContentPane(sc.panel1);
