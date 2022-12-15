@@ -21,30 +21,83 @@ public class SimpleCalcGUI extends JFrame {
         });
     }
     public void compute() {
-        int num1 = Integer.parseInt(tfNumber1.getText());
-        int num2 = Integer.parseInt((tfNumber2.getText()));
-        int result;
-        String op = (String) cbOperations.getSelectedItem();
+        String s1 = tfNumber1.getText();
+        String s2 = tfNumber2.getText();
+        System.out.println(s1);
+        System.out.println(s2);
 
-        switch(op) {
-            case "+":
-                result = num1 + num2;
-                lblResult.setText(String.valueOf(result));
-                break;
-            case "-":
-                result = num1 - num2;
-                lblResult.setText(String.valueOf(result));
-                break;
-            case "/":
-                result = num1 / num2;
-                lblResult.setText(String.valueOf(result));
-                break;
-            case "*":
-                result = num1 * num2;
-                lblResult.setText(String.valueOf(result));
-                break;
+        try {
+            if(s1.isBlank() || s2.isBlank()) {
+                throw new NullPointerException("No inputs");
+            }
+            int num1 = Integer.parseInt(tfNumber1.getText());
+            int num2 = Integer.parseInt((tfNumber2.getText()));
+
+            int result;
+            String op = (String) cbOperations.getSelectedItem();
+            switch (op) {
+                case "+":
+                    result = num1 + num2;
+                    lblResult.setText(String.valueOf(result));
+                    break;
+                case "-":
+                    result = num1 - num2;
+                    lblResult.setText(String.valueOf(result));
+                    break;
+                case "/":
+                    result = num1 / num2;
+                    lblResult.setText(String.valueOf(result));
+                    break;
+                case "*":
+                    result = num1 * num2;
+                    lblResult.setText(String.valueOf(result));
+                    break;
+            }
+        } catch (NullPointerException e) {
+            if(s1.isBlank()) {
+                if(s2.isBlank()) {
+                    JOptionPane.showMessageDialog(panel1, "All inputs must be filled");
+                    lblResult.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(panel1, "First input must be filled");
+                    lblResult.setText("");
+                }
+            } else {
+                JOptionPane.showMessageDialog(panel1, "Second input must be filled");
+                lblResult.setText("");
+            }
+        } catch(ArithmeticException e) {
+            JOptionPane.showMessageDialog(panel1, "2nd Number or denominator must be nonzero");
+            lblResult.setText("");
+            tfNumber2.setText("");
+        } catch(NumberFormatException e) {
+            if(stringNumberChecker(tfNumber1.getText())) {
+                if(stringNumberChecker(tfNumber2.getText())) {
+                    JOptionPane.showMessageDialog(panel1, "All inputs must be a number");
+                    lblResult.setText("");
+                    tfNumber1.setText("");
+                    tfNumber2.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(panel1, "First input must be a number");
+                    lblResult.setText("");
+                    tfNumber1.setText("");
+                }
+            } else {
+                JOptionPane.showMessageDialog(panel1, "Second input must be a number");
+                lblResult.setText("");
+                tfNumber2.setText("");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(panel1, "Error");
         }
-
+    }
+    public boolean stringNumberChecker(String str) {
+        for(int i = 0; i < str.length(); i++) {
+            if(!Character.isDigit(str.charAt(i))) {
+                return true;
+            }
+        }
+        return false;
     }
     public static void main(String[] args) {
         SimpleCalcGUI sc = new SimpleCalcGUI();
