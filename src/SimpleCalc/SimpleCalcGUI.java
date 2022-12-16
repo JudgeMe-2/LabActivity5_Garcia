@@ -32,23 +32,24 @@ public class SimpleCalcGUI extends JFrame {
             int num1 = Integer.parseInt(tfNumber1.getText());
             int num2 = Integer.parseInt((tfNumber2.getText()));
 
-            int result;
+            //int result;
+            long result;
             String op = (String) cbOperations.getSelectedItem();
             switch (op) {
                 case "+":
-                    result = num1 + num2;
+                    result = (long)num1 + num2;
                     lblResult.setText(String.valueOf(result));
                     break;
                 case "-":
-                    result = num1 - num2;
+                    result = (long)num1 - num2;
                     lblResult.setText(String.valueOf(result));
                     break;
                 case "/":
-                    result = num1 / num2;
+                    result = (long)num1 / num2;
                     lblResult.setText(String.valueOf(result));
                     break;
                 case "*":
-                    result = num1 * num2;
+                    result = (long) num1 * num2;
                     lblResult.setText(String.valueOf(result));
                     break;
             }
@@ -72,17 +73,17 @@ public class SimpleCalcGUI extends JFrame {
         } catch(NumberFormatException e) {
             if(stringNumberChecker(tfNumber1.getText())) {
                 if(stringNumberChecker(tfNumber2.getText())) {
-                    JOptionPane.showMessageDialog(panel1, "All inputs must be a number");
+                    JOptionPane.showMessageDialog(panel1, "All inputs must be a whole number");
                     lblResult.setText("");
                     tfNumber1.setText("");
                     tfNumber2.setText("");
                 } else {
-                    JOptionPane.showMessageDialog(panel1, "First input must be a number");
+                    JOptionPane.showMessageDialog(panel1, "First input must be a whole number");
                     lblResult.setText("");
                     tfNumber1.setText("");
                 }
             } else {
-                JOptionPane.showMessageDialog(panel1, "Second input must be a number");
+                JOptionPane.showMessageDialog(panel1, "Second input must be a whole number");
                 lblResult.setText("");
                 tfNumber2.setText("");
             }
