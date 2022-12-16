@@ -25,7 +25,7 @@ public class LeapYearGUI extends JFrame {
         long year = 0;
         System.out.println(Math.addExact(year, 0));
         try {
-            year = Integer.parseInt(tfYear.getText());
+            year = Long.parseLong(tfYear.getText());
             if(year <= 0) {
                 throw new Exception("Not a Year");
             }
