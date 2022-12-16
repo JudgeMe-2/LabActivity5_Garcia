@@ -21,9 +21,14 @@ public class FoodOrderGUI extends JFrame {
     private JButton btnOrder;
     List<JCheckBox> foods;
     List<JRadioButton> discounts;
-
+    ButtonGroup bg;
 
     public FoodOrderGUI() {
+        bg = new ButtonGroup();
+        bg.add(rbNone);
+        bg.add(rb5);
+        bg.add(rb10);
+        bg.add(rb15);
         foods = new ArrayList<>();
         foods.add(cPizza);
         foods.add(cBurger);
@@ -51,7 +56,6 @@ public class FoodOrderGUI extends JFrame {
         for(int i = 0; i < price.length; i++) {
             if(foods.get(i).isSelected()) {
                 total += price[i];
-                System.out.println(total);
                 flag1++;
             }
         }
@@ -62,8 +66,37 @@ public class FoodOrderGUI extends JFrame {
                 break;
             }
         }
+        try {
+            if(flag1 == 0 || flag2 == 0) {
+                throw new Exception("No selected inputs");
+            }
+        }catch(Exception e) {
+            if(flag1 == 0) {
+                if(flag2 == 0) {
+                    JOptionPane.showMessageDialog(panel1, "No selected inputs");
+                } else {
+                    JOptionPane.showMessageDialog(panel1, "No selected Foods");
+                }
+            } else {
+                JOptionPane.showMessageDialog(panel1, "No selected discount");
+            }
+            return;
+        }
         JOptionPane.showMessageDialog(panel1, "The total price is Php " + String.format("%.2f", total));
+        clearFoodSelection();
+        clearDiscountSelection();
 
+
+    }
+    public void clearFoodSelection() {
+        for(JCheckBox cb : foods) {
+            if(cb.isSelected()) {
+                cb.setSelected(false);
+            }
+        }
+    }
+    public void clearDiscountSelection() {
+        bg.clearSelection();
     }
     public static void main(String[] args) {
         FoodOrderGUI fo = new FoodOrderGUI();

@@ -177,7 +177,9 @@
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <font size="24"/>
+              <selected value="false"/>
               <text value="None"/>
             </properties>
           </component>
@@ -186,7 +188,9 @@
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <font size="24"/>
+              <selected value="false"/>
               <text value="5% Off"/>
             </properties>
           </component>
@@ -195,7 +199,9 @@
               <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <font size="24"/>
+              <selected value="false"/>
               <text value="10% Off"/>
             </properties>
           </component>
@@ -204,7 +210,9 @@
               <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <font size="24"/>
+              <selected value="false"/>
               <text value="15% Off"/>
             </properties>
           </component>
@@ -252,8 +260,7 @@
     </children>
   </grid>
   <buttonGroups>
-    <group name="discounts">
-      <member id="3a74f"/>
+    <group name="discountGroup">
       <member id="3a74f"/>
       <member id="97d65"/>
       <member id="aa6ea"/>
